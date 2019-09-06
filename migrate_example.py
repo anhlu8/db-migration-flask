@@ -26,7 +26,6 @@ class Person(db.Model):
 class Pet(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(20))
-    new = db.Column(db.String(20))
     owner_id = db.Column(db.Integer, db.ForeignKey('person.id'))
     
 if __name__ == '__main__':
@@ -36,3 +35,4 @@ if __name__ == '__main__':
 # Initialize 1st migration: `python migrate_example.py db init` which will create migrations folder
 # After define or make changes to models, run `python migrate_example.py db migrate`
 # Run this if cant pip install pstcopg2 `env LDFLAGS="-I/usr/local/opt/openssl/include -L/usr/local/opt/openssl/lib" pip --no-cache install psycopg2`
+# Then run `python migrate_example.py db upgrade` to update local database
